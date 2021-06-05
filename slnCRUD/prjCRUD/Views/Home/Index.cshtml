@@ -1,0 +1,32 @@
+﻿@model IList<prjCRUD.Models.Employee>
+
+@{
+    ViewBag.Title = "員工列表";
+}
+
+<h2>員工列表</h2>
+
+<a href="/Home/Create" class="btn btn-primary">新增</a>
+<table class="table">
+    <tr>
+        <td>員工編號</td>
+        <td>員工姓名</td>
+        <td>員工電話</td>
+        <td>員工薪資</td>
+        <td></td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.fId</td>
+            <td>@item.fName</td>
+            <td>@item.fPhone</td>
+            <td>@item.fSalary</td>
+            <td>
+               <a href="@Url.Action("Update")?fId=@item.fId" class="btn btn-info">修改</a>
+               <a href="@Url.Action("Delete")?fId=@item.fId" onclick="return confirm('確定要刪除嗎?')" class="btn btn-danger">刪除</a>
+            </td>
+        </tr>
+    }
+</table>
